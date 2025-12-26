@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV Digital - Célestin KPATCHA | Ingénieur Calcul Numérique & IA </title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Icônes Devicon -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+  <style>
+    /* STYLE CSS COMPLET */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 50px 20px;
+      background: linear-gradient(90deg, #1a2980, #26d0ce);
+      color: white;
+      border-radius: 15px;
+      margin-bottom: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 5px solid white;
+      margin-bottom: 20px;
+      object-fit: cover;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-bottom: 25px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 25px;
+      background: white;
+      color: #1a2980;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .btn:hover {
+      background: transparent;
+      color: white;
+      border-color: white;
+      transform: translateY(-3px);
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin: 30px 0;
+      flex-wrap: wrap;
+      background: white;
+      padding: 15px;
+      border-radius: 50px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #1a2980;
+      font-weight: 600;
+      padding: 8px 15px;
+      border-radius: 20px;
+      transition: all 0.3s;
+    }
+
+    nav a:hover {
+      background: #1a2980;
+      color: white;
+    }
+
+    section {
+      background: white;
+      padding: 30px;
+      margin-bottom: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #1a2980;
+      margin-bottom: 25px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid #26d0ce;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 25px;
+    }
+
+    .skill {
+      text-align: center;
+      padding: 20px 15px;
+      background: #f8f9fa;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+
+    .skill:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .skill i, .skill img {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      display: block;
+      margin: 0 auto 10px;
+    }
+
+    .skill img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+    }
+
+    .skill-level {
+      height: 8px;
+      background: #e0e0e0;
+      border-radius: 4px;
+      margin-top: 10px;
+      overflow: hidden;
+    }
+
+    .skill-level div {
+      height: 100%;
+      background: linear-gradient(90deg, #26d0ce, #1a2980);
+      border-radius: 4px;
+    }
+
+    .card {
+      background: #f8f9fa;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      border-left: 5px solid #1a2980;
+    }
+
+    .card h3 {
+      color: #1a2980;
+      margin-bottom: 10px;
+    }
+
+    .card ul {
+      padding-left: 20px;
+    }
+
+    .card li {
+      margin-bottom: 8px;
+    }
+
+    .contact-form {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #1a2980;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #666;
+      margin-top: 30px;
+      border-top: 1px solid #e0e0e0;
+    }
+
+    .fade-in {
+      animation: fadeIn 0.8s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      nav {
+        gap: 10px;
+      }
+      
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Section Hero avec votre photo -->
+  <header class="hero fade-in">
+    <div class="hero-content">
+      <img src="Bandeau_2018-CONF-05.jpg" alt="Photo de Célestin KPATCHA" class="profile-img">
+      <h1>Célestin KPATCHA</h1>
+      <p>Ingénieur en Calcul Scientifique – Modélisation & Simulation numérique & Intelligence Artificielle</p>
+      <div class="buttons">
+        <!-- REMPLACEZ "votre-cv.pdf" par votre vrai CV -->
+        <a href="CV_Celestin.pdf" target="_blank" class="btn">📄 Télécharger mon CV</a>
+        
+        <a href="https://github.com/Celestinkpatcha" target="_blank" class="btn">💻 Mon GitHub</a>
+        
+        <a href="www.linkedin.com/in/celestinkpatcha" target="_blank" class="btn">💼 Mon LinkedIn</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#about">À propos</a>
+    <a href="#skills">Compétences</a>
+    <a href="#experience">Expériences</a>
+    <a href="#projects">Projets</a>
+    <a href="#education">Formation</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- À propos -->
+  <section id="about" class="fade-in">
+    <h2>À propos</h2>
+    <p>
+      Étudiant en Master Ingénierie Mathématique (Calcul scientifique), passionné par les sciences appliquées, la modélisation, la simulation,
+      le machine learning et l'intelligence artificielle. Curieux, rigoureux et motivé,
+      je recherche un stage de fin de master (à partir de Mars 2026) pour une période de 6 mois afin de développer mes compétences.
+    </p>
+  </section>
+
+  <!-- Compétences -->
+  <section id="skills" class="fade-in">
+    <h2>Compétences</h2>
+    <div class="skills-grid">
+      <div class="skill">
+        <i class="devicon-python-plain colored"></i>
+        <p>Python (NumPy/SciPy)</p>
+        <div class="skill-level"><div style="width: 90%;"></div></div>
+      </div>
+
+      <div class="skill">
+        <i class="devicon-cplusplus-plain colored"></i>
+        <p>C++</p>
+        <div class="skill-level"><div style="width: 70%;"></div></div>
+      </div>
+
+      <div class="skill">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Matlab_Logo.png/240px-Matlab_Logo.png" alt="MATLAB" style="width: 40px; height: auto;">
+        <p>MATLAB</p>
+        <div class="skill-level"><div style="width: 75%;"></div></div>
+      </div>
+
+      <div class="skill">
+        <i class="devicon-git-plain colored"></i>
+        <p>Git/GitHub</p>
+        <div class="skill-level"><div style="width: 80%;"></div></div>
+      </div>
+
+      <div class="skill">
+        <i class="devicon-docker-plain colored"></i>
+        <p>Docker</p>
+        <div class="skill-level"><div style="width: 80%;"></div></div>
+      </div>
+
+      <div class="skill">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Abaqus_logo.svg/240px-Abaqus_logo.svg.png" alt="Abaqus" style="width: 40px; height: auto;">
+        <p>Abaqus (FEM)</p>
+        <div class="skill-level"><div style="width: 75%;"></div></div>
+      </div>
+
+      <div class="skill">
+        <img src="https://www.openfoam.com/images/openfoam-logo.svg" alt="OpenFOAM" style="width: 40px; height: auto;">
+        <p>OpenFOAM (FVM)</p>
+        <div class="skill-level"><div style="width: 70%;"></div></div>
+      </div>
+
+      <div class="skill">
+        <img src="https://julialang.org/assets/infra/logo.svg" alt="Julia" style="width: 40px; height: auto;">
+        <p>Julia</p>
+        <div class="skill-level"><div style="width: 60%;"></div></div>
+      </div>
+
+      <div class="skill">
+        <i class="devicon-mysql-plain-wordmark colored"></i>
+        <p>SQL</p>
+        <div class="skill-level"><div style="width: 60%;"></div></div>
+      </div>
+
+      <div class="skill">
+        <img src="https://pytorch.org/assets/images/pytorch-logo.png" alt="PyTorch" style="width: 40px; height: auto;">
+        <p>PyTorch</p>
+        <div class="skill-level"><div style="width: 75%;"></div></div>
+      </div>
+
+      <div class="skill">
+        <p>Méthodes Numériques (FEM/FDM/FVM)</p>
+        <div class="skill-level"><div style="width: 85%;"></div></div>
+      </div>
+
+      <div class="skill">
+        <p>HPC & Parallélisation</p>
+        <div class="skill-level"><div style="width: 65%;"></div></div>
+      </div>
+    </div>
+  </section>
+
+    <!-- Projets -->
+  <section id="projects" class="fade-in">
+    <h2>Projets Académiques</h2>
+    <div class="card">
+      <h3>PFE (en cours) – Deep Learning sur maillages FEM</h3>
+      <p><strong>Technologies :</strong> Python, PyTorch, JAX, SOFA Framework</p>
+      <p>Application de réseaux de neurones graphiques (GNN) pour la prédiction de contraintes mécaniques sur des maillages d'éléments finis.</p>
+    </div>
+    
+    <div class="card">
+      <h3>Projet de Recherche – Optimisation de parc éolien (2025)</h3>
+      <p><strong>Technologies :</strong> Python, SciPy, Pandas</p>
+      <p>Développement d'un algorithme d'optimisation pour la disposition des éoliennes maximisant la production énergétique.</p>
+    </div>
+    <div class="card">
+      <h3>Projet Deep learning – chatgpt (2025)</h3>
+      <p><strong>Technologies :</strong> Pytorch, GoogleColab</p>
+      <p>Implémentation d'un modèle de langage basé sur les réseaux de neurones transformer.</p>
+    </div>
+
+    <div class="card">
+      <h3>Projet de Méthodes Numériques – Méthode des frontières immergées (2024)</h3>
+      <p><strong>Technologies :</strong> Python, NumPy, Matplotlib</p>
+      <p>Implémentation de la méthode IBM pour la simulation d'interaction fluide-structure.</p>
+    </div>
+
+    
+  </section>
+
+  <!-- Expériences -->
+  <section id="experience" class="fade-in">
+    <h2>Expériences</h2>
+    <div class="card">
+      <h3>Enseignant de Mathématiques – Collège militaire éyadéma(Togo): 2023</h3>
+      <p><strong>Classe :</strong> 2nde L, 1ere S, Tle L</p>
+      <p>cours de mathématiques, devoirs, évaluation des élèves</p>
+    </div>
+
+    <div class="card">
+      <h3>Enseignant particulier de Mathématiques – Complétude(Nice-France): 2023</h3>
+      <p><strong>Classe :</strong> 5ème, 2nde, 1ere</p>
+      <p>cours particuliers de mathématiques</p>
+    </div>  
+
+    </section>
+
+  <!-- Formation -->
+  <section id="education" class="fade-in">
+    <h2>Formation</h2>
+    <div class="card">
+      <ul>
+        <li><strong>Université Côte d'Azur – Polytech Nice Sophia (2025–2026)</strong><br>
+            Master 2 INUM – Ingénierie Numérique et Modélisation</li>
+        <li><strong>Université Côte d'Azur (2024–2025)</strong><br>
+            Master 1 Ingénierie Mathématique – Calcul Scientifique</li>
+        <li><strong>Université de Kara, Togo (2018–2021)</strong><br>
+            Licence Mathématiques & Applications</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Contact - FORMULAIRE FONCTIONNEL -->
+  <section id="contact" class="fade-in">
+    <h2>Contactez-moi</h2>
+    <p style="margin-bottom: 20px; text-align: center;">Pour un stage, une collaboration ou simplement échanger !</p>
+    
+    <!-- REMPLACEZ "votre-email@exemple.com" par votre VRAI email -->
+    <form action="https://formspree.io/f/mjgvkorz" method="POST" class="contact-form">
+      <div class="form-group">
+        <input type="text" name="name" placeholder="Votre nom complet" required>
+      </div>
+      
+      <div class="form-group">
+        <input type="email" name="email" placeholder="Votre adresse email" required>
+      </div>
+      
+      <div class="form-group">
+        <input type="text" name="subject" placeholder="Sujet (ex: Stage calcul numérique, machine learning)" required>
+      </div>
+      
+      <div class="form-group">
+        <textarea name="message" rows="5" placeholder="Votre message..." required></textarea>
+      </div>
+      
+      <button type="submit" class="btn">📨 Envoyer le message</button>
+    </form>
+    
+    <div style="text-align: center; margin-top: 20px;">
+      <p>Ou contactez-moi directement :</p>
+      <p>📧 <strong>celestinkpatcha1@gmail.com</strong></p>
+      <p>📱 <strong>+33 7 49 90 34 46</strong></p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Célestin KPATCHA | CV Digital – Ingénieur en Calcul Numérique</p>
+    <p style="margin-top: 10px; font-size: 0.9rem;">
+      Dernière mise à jour : Décembre 2025
+    </p>
+  </footer>
+
+</body>
+</html>
