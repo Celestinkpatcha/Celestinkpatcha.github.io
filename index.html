@@ -404,6 +404,53 @@
       padding: 2px 8px;
     }
 
+    .tl-card-media {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin: 4px 0 12px;
+    }
+
+    .tl-card-media a {
+      display: block;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      line-height: 0;
+    }
+
+    .tl-card-media img {
+      width: 100%;
+      height: 110px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.25s;
+    }
+
+    .tl-card-media a:hover img {
+      transform: scale(1.04);
+    }
+
+    .tl-card-media figcaption {
+      font-size: 10.5px;
+      color: var(--muted);
+      text-align: center;
+      padding: 4px 2px 0;
+    }
+
+    .tl-card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--teal);
+      text-decoration: none;
+      margin-top: 2px;
+    }
+
+    .tl-card-link:hover { text-decoration: underline; }
+
     /* ── FORMATION ── */
     .edu-grid {
       display: grid;
@@ -538,10 +585,23 @@
       .skills-groups { grid-template-columns: 1fr; }
       .edu-grid { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; }
+      .softskills-grid { grid-template-columns: 1fr !important; }
+      .tl-card-media { grid-template-columns: 1fr 1fr; }
       .tl-item { grid-template-columns: 80px 1fr; }
       .tl-item::after { left: 80px; }
       .tl-dot-col { left: 80px; }
       .hero { padding: 50px 24px 44px; }
+    }
+
+    @media (max-width: 480px) {
+      .tl-item { grid-template-columns: 1fr; gap: 8px 0; }
+      .tl-item::after { display: none; }
+      .tl-dot-col { display: none; }
+      .tl-date { text-align: left; }
+      .tl-body { padding-left: 0; }
+      .tl-card-media { grid-template-columns: 1fr 1fr; }
+      .wrapper { padding: 0 18px; }
+      .section { padding: 40px 0; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -665,13 +725,13 @@
     <div class="timeline">
 
       <div class="tl-item">
-        <div class="tl-date"><span class="tl-date-text">2025<br>Stage 6 mois</span></div>
+        <div class="tl-date"><span class="tl-date-text">2025-2026<br>Stage 6 mois</span></div>
         <div class="tl-dot-col"><div class="tl-dot"></div></div>
         <div class="tl-body">
           <div class="tl-card">
             <div class="tl-card-top">
               <div class="tl-card-title">Ingénieur stagiaire — Deep Learning & Télédétection</div>
-              <span class="tl-badge badge-stage">Stage</span>
+              <span class="tl-badge badge-stage">Stage en cours</span>
             </div>
             <div class="tl-card-place">ACRI-ST · Sophia-Antipolis, France</div>
             <p class="tl-card-desc">
@@ -759,26 +819,52 @@
       </div>
 
       <div class="tl-item">
-        <div class="tl-date"><span class="tl-date-text">2025</span></div>
+        <div class="tl-date"><span class="tl-date-text">2025-2026</span></div>
         <div class="tl-dot-col"><div class="tl-dot"></div></div>
         <div class="tl-body">
           <div class="tl-card">
             <div class="tl-card-top">
-              <div class="tl-card-title">Optimisation de parc éolien</div>
+              <div class="tl-card-title">Optimisation de la disposition d'un parc éolien</div>
+              <span class="tl-badge badge-done">✓ Terminé</span>
             </div>
             <p class="tl-card-desc">
-              Développement d'un algorithme d'optimisation pour la disposition des éoliennes maximisant la
-              production énergétique, en tenant compte des effets de sillage et des contraintes géométriques.
+              Placement de 20 éoliennes sur un terrain non convexe avec zones d'exclusion et relief non
+              uniforme, par optimisation en deux étapes (géométrie puis rose des vents réelle). Modèle de
+              sillage gaussien (Bastankhah &amp; Porté-Agel), rose de vent par distribution de Weibull, et
+              comparaison de deux familles de méthodes d'optimisation : gradient (L-BFGS-B) et CMA-ES.
             </p>
-            <div class="tl-tech">
-              <span>Python</span><span>SciPy</span><span>Pandas</span><span>Optimisation</span>
+            <div class="tl-card-media">
+              <figure>
+                <a href="assets/eolien/layout_evolution.gif" target="_blank" rel="noopener">
+                  <img src="assets/eolien/layout_evolution.gif" alt="Animation de l'évolution du placement des éoliennes">
+                </a>
+                <figcaption>Évolution du layout (CMA-ES)</figcaption>
+              </figure>
+              <figure>
+                <a href="assets/eolien/wake_map.png" target="_blank" rel="noopener">
+                  <img src="assets/eolien/wake_map.png" alt="Carte de sillage du parc optimisé">
+                </a>
+                <figcaption>Carte de sillage</figcaption>
+              </figure>
+              <figure>
+                <a href="assets/eolien/terrain.png" target="_blank" rel="noopener">
+                  <img src="assets/eolien/terrain.png" alt="Terrain avec zones d'exclusion et relief">
+                </a>
+                <figcaption>Terrain et contraintes</figcaption>
+              </figure>
+            </div>
+            <a class="tl-card-link" href="rapport-parc-eolien.html" target="_blank" rel="noopener">
+              → Rapport détaillé (modèle, méthode, analyse des résultats)
+            </a>
+            <div class="tl-tech" style="margin-top:10px;">
+              <span>Python</span><span>NumPy</span><span>SciPy</span><span>Shapely</span><span>CMA-ES</span><span>Optimisation</span>
             </div>
           </div>
         </div>
       </div>
 
       <div class="tl-item">
-        <div class="tl-date"><span class="tl-date-text">2025</span></div>
+        <div class="tl-date"><span class="tl-date-text">2025-2026</span></div>
         <div class="tl-dot-col"><div class="tl-dot"></div></div>
         <div class="tl-body">
           <div class="tl-card">
@@ -797,19 +883,45 @@
       </div>
 
       <div class="tl-item">
-        <div class="tl-date"><span class="tl-date-text">2024</span></div>
+        <div class="tl-date"><span class="tl-date-text">2024–2025</span></div>
         <div class="tl-dot-col"><div class="tl-dot"></div></div>
         <div class="tl-body">
           <div class="tl-card">
             <div class="tl-card-top">
-              <div class="tl-card-title">Méthode des frontières immergées (IBM)</div>
+              <div class="tl-card-title">Simulation fluide-structure par frontières immergées (IBM)</div>
+              <span class="tl-badge badge-done">✓ Terminé</span>
             </div>
             <p class="tl-card-desc">
-              Implémentation de la méthode IBM (Immersed Boundary Method) pour la simulation numérique
-              d'interactions fluide-structure. Résolution des équations de Navier-Stokes sur grille cartésienne.
+              Solveur Navier-Stokes 2D (grille MAC, méthode de projection de Chorin) couplé à un forçage direct
+              implicite pour simuler un objet immergé sans le mailler. Validé sur l'allée tourbillonnaire de von
+              Kármán derrière un cylindre (nombre de Strouhal conforme à la littérature), puis appliqué à un
+              profil NACA (polaire Cl-alpha, décrochage tourbillonnaire) et à une aile battante en mouvement imposé.
             </p>
-            <div class="tl-tech">
-              <span>Python</span><span>NumPy</span><span>Matplotlib</span><span>FDM</span><span>EDP</span>
+            <div class="tl-card-media">
+              <figure>
+                <a href="assets/ibm/cylindre_sillage.gif" target="_blank" rel="noopener">
+                  <img src="assets/ibm/cylindre_sillage.gif" alt="Animation de l'allée de von Kármán derrière un cylindre">
+                </a>
+                <figcaption>Allée de von Kármán</figcaption>
+              </figure>
+              <figure>
+                <a href="assets/ibm/naca_cl_alpha.png" target="_blank" rel="noopener">
+                  <img src="assets/ibm/naca_cl_alpha.png" alt="Courbe de portance Cl en fonction de l'angle d'attaque, comparée à la théorie">
+                </a>
+                <figcaption>Polaire Cl(α), profil NACA</figcaption>
+              </figure>
+              <figure>
+                <a href="assets/ibm/aile_battante_vorticite.png" target="_blank" rel="noopener">
+                  <img src="assets/ibm/aile_battante_vorticite.png" alt="Sillage tourbillonnaire d'une aile battante">
+                </a>
+                <figcaption>Sillage, aile battante</figcaption>
+              </figure>
+            </div>
+            <a class="tl-card-link" href="ibm-frontieres-immergees.html" target="_blank" rel="noopener">
+              → Rapport détaillé (théorie, méthode, analyse des résultats)
+            </a>
+            <div class="tl-tech" style="margin-top:10px;">
+              <span>Python</span><span>NumPy</span><span>SciPy</span><span>Matplotlib</span><span>Navier-Stokes</span><span>IBM</span>
             </div>
           </div>
         </div>
@@ -846,7 +958,7 @@
     <p class="section-eyebrow">Personnalité</p>
     <h2 class="section-title">Savoir-être & centres d'intérêt</h2>
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 32px;">
+    <div class="softskills-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 32px;">
 
       <div class="skill-group">
         <div class="skill-group-label">En entreprise</div>
@@ -941,7 +1053,7 @@
 
       <div class="contact-intro">
         <h3>Travaillons ensemble</h3>
-        <p>Pour un CDI en France, une collaboration ou simplement échanger sur mes projets !</p>
+        <p>Pour un CDD ou CDI en France, une collaboration ou simplement échanger sur mes projets !</p>
         <div class="contact-links">
           <a href="mailto:celestinkpatcha1@gmail.com" class="contact-link">
             <span class="contact-icon">📧</span>
@@ -965,7 +1077,7 @@
       <form action="https://formspree.io/f/mjgvkorz" method="POST" class="contact-form-col">
         <input type="text" name="name" placeholder="Votre nom complet" required>
         <input type="email" name="email" placeholder="Votre adresse email" required>
-        <input type="text" name="subject" placeholder="Sujet (CDI, collaboration…)" required>
+        <input type="text" name="subject" placeholder="Sujet (CDD, CDI, collaboration…)" required>
         <textarea name="message" rows="4" placeholder="Votre message…" required></textarea>
         <button type="submit" class="btn-send">📨 Envoyer</button>
       </form>
@@ -976,7 +1088,7 @@
 </div><!-- /wrapper -->
 
 <footer>
-  © 2026 Célestin KPATCHA &nbsp;·&nbsp; Ingénieur Calcul Scientifique & IA &nbsp;·&nbsp; Disponible CDI partout en France &nbsp;·&nbsp; Mise à jour : Juin 2026
+  © 2026 Célestin KPATCHA &nbsp;·&nbsp; Ingénieur Calcul Scientifique & IA &nbsp;·&nbsp; Disponible CDD, CDI partout en France &nbsp;·&nbsp; Mise à jour : Juillet 2026
 </footer>
 
 </body>
