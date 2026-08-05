@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fiche projet — Télédétection & modélisation de niche écologique (stage ACRI-ST)</title>
+<style>
+:root {
+  --bg: #eeeae7; --surface: #feffff; --ink: #16212b; --ink-soft: #020316;
+  --ink-faint: #084a88; --accent: #0a6e61; --accent-ink: #0b5c50; --warm: #6145e0;
+  --line: #d3dce2; --code-bg: #14dd9a;
+  --shadow: 0 1px 2px rgba(22,33,43,0.06), 0 8px 24px rgba(22,33,43,0.05);
+  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, ui-serif, serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0d1117; --surface: #131b24; --ink: #dde5ec; --ink-soft: #a3b2bf;
+    --ink-faint: #6d7d8b; --accent: #3ecbb0; --accent-ink: #b8f3e8; --warm: #e0865f;
+    --line: #223040; --code-bg: #1a232e;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0d1117; --surface: #131b24; --ink: #dde5ec; --ink-soft: #a3b2bf;
+  --ink-faint: #6d7d8b; --accent: #3ecbb0; --accent-ink: #b8f3e8; --warm: #e0865f;
+  --line: #223040; --code-bg: #1a232e;
+  --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
+}
+:root[data-theme="light"] {
+  --bg: #eef2f5; --surface: #ffffff; --ink: #16212b; --ink-soft: #4d5c6a;
+  --ink-faint: #7c8a97; --accent: #0f8f7e; --accent-ink: #0b5c50; --warm: #b0472b;
+  --line: #d3dce2; --code-bg: #e4eaee;
+  --shadow: 0 1px 2px rgba(22,33,43,0.06), 0 8px 24px rgba(22,33,43,0.05);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 24px 72px; }
+.confid {
+  background: var(--warm); color: #fff; font-size: 13.5px; text-align: center;
+  padding: 9px 16px; line-height: 1.5; margin: 0 0 0;
+}
+header.masthead { padding: 48px 0 32px; border-bottom: 1px solid var(--line); margin-bottom: 8px; }
+.kicker {
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.13em;
+  text-transform: uppercase; color: var(--accent); margin: 0 0 14px;
+}
+h1.title {
+  font-family: var(--font-display); font-weight: 500; font-size: clamp(24px, 3.4vw, 32px);
+  line-height: 1.2; margin: 0 0 12px; color: var(--ink);
+}
+p.lede { font-size: 16px; color: var(--ink-soft); margin: 0 0 18px; }
+.meta-row { display: flex; flex-wrap: wrap; gap: 8px; font-family: var(--font-mono); font-size: 12px; color: var(--ink-faint); }
+.meta-row span { border: 1px solid var(--line); border-radius: 3px; padding: 3px 8px; background: var(--surface); }
+section { padding: 30px 0; border-bottom: 1px solid var(--line); }
+section:last-of-type { border-bottom: none; }
+.eyebrow {
+  font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--accent); margin: 0 0 8px;
+}
+h2 { font-family: var(--font-display); font-weight: 500; font-size: 21px; margin: 0 0 14px; color: var(--ink); }
+h3 { font-family: var(--font-display); font-weight: 500; font-size: 16.5px; margin: 22px 0 8px; color: var(--ink); }
+p { margin: 0 0 13px; }
+strong { color: var(--ink); font-weight: 650; }
+em.term { font-style: normal; font-weight: 650; color: var(--accent-ink); }
+ul { margin: 0 0 13px; padding-left: 20px; }
+ul li { margin-bottom: 5px; }
+code, .mono { font-family: var(--font-mono); font-size: 0.88em; }
+code { background: var(--code-bg); padding: 1px 5px; border-radius: 4px; }
+.callout {
+  border-left: 3px solid var(--accent); background: var(--surface); border-radius: 0 8px 8px 0;
+  padding: 14px 18px; margin: 18px 0; box-shadow: var(--shadow); font-size: 14.5px; color: var(--ink-soft);
+}
+.callout .label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 6px; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 10px 0 18px; }
+th, td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { color: var(--ink-faint); font-weight: 600; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.03em; }
+.badge {
+  display: inline-block; font-family: var(--font-mono); font-size: 11px;
+  padding: 2px 8px; border-radius: 20px; border: 1px solid var(--line); color: var(--ink-soft);
+}
+.tech-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 4px; }
+.tech-tags span { font-size: 11.5px; font-family: var(--font-mono); color: var(--ink-soft);
+  background: var(--code-bg); border: 1px solid var(--line); border-radius: 5px; padding: 3px 8px; }
+
+/* ── SCHEMA DE PRINCIPE (dessine, pas une capture) ── */
+.pipeline { display: flex; flex-direction: column; gap: 10px; margin: 20px 0; }
+.pl-row { display: flex; align-items: stretch; gap: 10px; flex-wrap: wrap; }
+.pl-box {
+  flex: 1; min-width: 130px; background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 12px 14px; font-size: 13px; color: var(--ink-soft);
+  box-shadow: var(--shadow); display: flex; flex-direction: column; justify-content: center;
+}
+.pl-box strong { display: block; color: var(--ink); font-size: 13.5px; margin-bottom: 2px; }
+.pl-box.accent { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, var(--surface)); }
+.pl-arrow { display: flex; align-items: center; justify-content: center; color: var(--ink-faint); font-size: 18px; padding: 0 2px; }
+@media (max-width: 560px) { .pl-row { flex-direction: column; } .pl-arrow { transform: rotate(90deg); } }
+
+footer { padding-top: 28px; color: var(--ink-faint); font-size: 12.5px; }
+::selection { background: var(--accent); color: white; }
+</style>
+</head>
+<body>
+
+<div class="confid">
+  Fiche synthétique publiée avec le souci de la confidentialité des travaux menés chez ACRI-ST : aucune
+  donnée, résultat chiffré ni visuel issu du stage n'est reproduit ici. Un résumé du rapport pourra être
+  publié ultérieurement, sous réserve d'approbation d'ACRI-ST.
+</div>
+
+<div class="wrap">
+  <header class="masthead">
+    <p class="kicker">Fiche projet — stage ingénieur</p>
+    <h1 class="title">Détection d'oliviers par deep learning et modélisation de niche climatique</h1>
+    <p class="lede">Stage de fin d'études (M2), ACRI-ST, Sophia-Antipolis — 2025-2026. Cette fiche décrit la
+    démarche, les méthodes et les outils mobilisés, sans reproduire de données ni de résultats propres à
+    la mission.</p>
+    <div class="meta-row">
+      <span>Télédétection Sentinel-2</span>
+      <span>Deep learning (séries temporelles)</span>
+      <span>Modélisation de niche écologique</span>
+      <span>Python / PyTorch / R</span>
+    </div>
+  </header>
+
+  <section id="contexte">
+    <p class="eyebrow">Contexte</p>
+    <h2>Objectif de la mission</h2>
+    <p>Étudier la répartition actuelle de l'olivier (<em>Olea europaea</em>) en région PACA et anticiper
+    l'effet du changement climatique sur les zones favorables à sa culture, en combinant deux approches
+    complémentaires : la <strong>détection automatique des oliveraies</strong> par imagerie satellite, et la
+    <strong>modélisation de la niche climatique</strong> de l'espèce à partir de ces détections.</p>
+  </section>
+
+  <section id="demarche">
+    <p class="eyebrow">Démarche</p>
+    <h2>Deux volets méthodologiques</h2>
+
+    <h3>1 — Détection par deep learning sur séries temporelles</h3>
+    <p>Les oliveraies ont une signature spectrale qui varie au cours de l'année (phénologie) : les distinguer
+    fiablement des autres cultures ou de la végétation naturelle demande d'observer plusieurs dates dans
+    l'année plutôt qu'une image isolée. L'approche retenue s'appuie sur <strong>U-TAE</strong> (U-Net +
+    Temporal Attention Encoder, Garnot &amp; Landrieu, ICCV 2021), une architecture conçue spécifiquement pour
+    la segmentation de séries temporelles d'images satellite : un encodeur d'attention temporelle pondère
+    la contribution de chaque date, avant un décodeur de type U-Net qui produit la carte de segmentation.</p>
+    <div class="pipeline">
+      <div class="pl-row">
+        <div class="pl-box"><strong>Sentinel-2</strong>série temporelle multi-dates, 12 bandes spectrales</div>
+        <div class="pl-arrow">→</div>
+        <div class="pl-box"><strong>Annotations terrain</strong>polygones oliviers / non-oliviers (QGIS)</div>
+        <div class="pl-arrow">→</div>
+        <div class="pl-box accent"><strong>U-TAE</strong>encodeur d'attention temporelle + décodeur U-Net</div>
+        <div class="pl-arrow">→</div>
+        <div class="pl-box"><strong>Carte de probabilité</strong>présence d'oliviers, région entière</div>
+      </div>
+    </div>
+    <p>Travail réalisé sur cette partie : constitution du jeu de données (téléchargement et organisation des
+    images Sentinel-2, croisement avec les annotations), entraînement et validation du modèle, inférence sur
+    l'ensemble de la région, et post-traitement (filtrage des fausses détections sur route/bâti via des
+    masques OpenStreetMap, vectorisation des cartes de sortie).</p>
+
+    <h3>2 — Modélisation de la niche climatique (SDM)</h3>
+    <p>Les détections issues du volet précédent servent de points de présence pour un modèle de distribution
+    d'espèce (<em>Species Distribution Model</em>), sous <strong>MaxEnt</strong> (maximum d'entropie,
+    Phillips et al.), calibré sur des variables bioclimatiques dérivées des réanalyses climatiques
+    <strong>ERA5-Land</strong> (Copernicus). Le modèle est ajusté sur une période climatique de référence puis
+    projeté sur une période plus récente, ce qui permet de visualiser l'évolution de la niche favorable à
+    l'espèce dans le temps.</p>
+    <div class="pipeline">
+      <div class="pl-row">
+        <div class="pl-box"><strong>Carte de détection</strong>→ points de présence (sous-échantillonnage spatial)</div>
+        <div class="pl-arrow">→</div>
+        <div class="pl-box"><strong>ERA5-Land</strong>variables bioclimatiques (19 indices), 2 périodes</div>
+        <div class="pl-arrow">→</div>
+        <div class="pl-box accent"><strong>MaxEnt</strong>sélection de variables (VIF, corrélation) + calibration</div>
+        <div class="pl-arrow">→</div>
+        <div class="pl-box"><strong>Carte de niche</strong>période de référence vs période récente</div>
+      </div>
+    </div>
+    <p>Travail réalisé sur cette partie : extraction et nettoyage des points de présence (sous-échantillonnage
+    spatial pour limiter l'autocorrélation), calcul des variables bioclimatiques, sélection de variables par
+    facteur d'inflation de la variance (VIF) et analyse de corrélation, calibration et validation du modèle,
+    production des cartes de favorabilité pour les deux périodes climatiques.</p>
+  </section>
+
+  <section id="outils">
+    <p class="eyebrow">Outils</p>
+    <h2>Chaîne technique mobilisée</h2>
+    <table>
+      <tbody>
+        <tr><td>Langages</td><td>Python (traitement, deep learning, géotraitement), R (analyses statistiques)</td></tr>
+        <tr><td>Deep learning</td><td>PyTorch, architecture U-TAE (Garnot &amp; Landrieu 2021)</td></tr>
+        <tr><td>SDM</td><td>MaxEnt (Phillips et al.), sélection de variables par VIF</td></tr>
+        <tr><td>Géospatial</td><td>GDAL/rasterio, GeoPandas, Shapely, QGIS</td></tr>
+        <tr><td>Données</td><td>Sentinel-2 (GEODES/CNES), ERA5-Land (Copernicus CDS), OpenStreetMap</td></tr>
+      </tbody>
+    </table>
+    <div class="tech-tags">
+      <span>Python</span><span>PyTorch</span><span>R</span><span>Sentinel-2</span>
+      <span>U-TAE</span><span>MaxEnt</span><span>ERA5-Land</span><span>GDAL</span>
+      <span>GeoPandas</span><span>QGIS</span>
+    </div>
+  </section>
+
+  <section id="competences">
+    <p class="eyebrow">Compétences</p>
+    <h2>Compétences mobilisées</h2>
+    <ul>
+      <li>Traitement de séries temporelles d'images satellite multi-spectrales</li>
+      <li>Conception et entraînement de modèles de deep learning pour la segmentation sémantique</li>
+      <li>Modélisation de niche écologique et sélection statistique de variables (VIF, corrélation)</li>
+      <li>Constitution de jeux de données géospatiaux (annotation, croisement de sources, validation spatiale)</li>
+      <li>Analyse critique de résultats scientifiques (métriques de discrimination, validation croisée)</li>
+    </ul>
+  </section>
+
+  <footer>
+    Célestin Kpatcha — stage M2, ACRI-ST.
+  </footer>
+</div>
+
+</body>
+</html>
