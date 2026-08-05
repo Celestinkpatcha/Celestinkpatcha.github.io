@@ -100,6 +100,25 @@
       margin-bottom: 22px;
       position: relative;
       z-index: 1;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .profile-img:hover { transform: scale(1.05); }
+
+    #lb-photo {
+      display: none;
+      position: fixed; inset: 0; z-index: 999;
+      background: rgba(10,10,20,0.88);
+      align-items: center; justify-content: center;
+      cursor: zoom-out;
+      padding: 24px;
+    }
+    #lb-photo.open { display: flex; }
+    #lb-photo img {
+      max-width: min(90vw, 640px);
+      max-height: 85vh;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
     }
 
     .hero h1 {
@@ -622,9 +641,15 @@
   <a href="#contact">Contact</a>
 </nav>
 
+<!-- LIGHTBOX PHOTO DE PROFIL -->
+<div id="lb-photo" onclick="this.classList.remove('open')">
+  <img src="Bandeau_2018-CONF-05.png" alt="Photo de Célestin KPATCHA (agrandie)">
+</div>
+
 <!-- HERO -->
 <header class="hero">
-  <img src="Bandeau_2018-CONF-05.png" alt="Photo de Célestin KPATCHA" class="profile-img">
+  <img src="Bandeau_2018-CONF-05.png" alt="Photo de Célestin KPATCHA" class="profile-img"
+       onclick="document.getElementById('lb-photo').classList.add('open')">
   <h1>Célestin KPATCHA</h1>
   <p class="hero-tagline">Calcul Scientifique · Simulation Numérique · Intelligence Artificielle</p>
   <div class="hero-badges">
