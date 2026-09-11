@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fiche projet — Télédétection & modélisation de niche écologique (stage ACRI-ST)</title>
+<title>Stage ACRI-ST · Détection d'oliviers et niche climatique</title>
 <style>
 :root {
-  --bg: #eeeae7; --surface: #feffff; --ink: #16212b; --ink-soft: #020316;
-  --ink-faint: #084a88; --accent: #0a6e61; --accent-ink: #0b5c50; --warm: #6145e0;
-  --line: #d3dce2; --code-bg: #14dd9a;
+  --bg: #eef2f5; --surface: #ffffff; --ink: #16212b; --ink-soft: #4d5c6a;
+  --ink-faint: #7c8a97; --accent: #0f8f7e; --accent-ink: #0b5c50; --warm: #b0472b;
+  --line: #d3dce2; --code-bg: #e4eaee;
   --shadow: 0 1px 2px rgba(22,33,43,0.06), 0 8px 24px rgba(22,33,43,0.05);
   --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, ui-serif, serif;
   --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -40,7 +40,7 @@ body {
   font-family: var(--font-body); font-size: 16px; line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
-.wrap { max-width: 760px; margin: 0 auto; padding: 0 24px 72px; }
+.wrap { max-width: 780px; margin: 0 auto; padding: 0 24px 72px; }
 .confid {
   background: var(--warm); color: #fff; font-size: 13.5px; text-align: center;
   padding: 9px 16px; line-height: 1.5; margin: 0 0 0;
@@ -80,15 +80,20 @@ code { background: var(--code-bg); padding: 1px 5px; border-radius: 4px; }
 table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 10px 0 18px; }
 th, td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
 th { color: var(--ink-faint); font-weight: 600; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.03em; }
-.badge {
-  display: inline-block; font-family: var(--font-mono); font-size: 11px;
-  padding: 2px 8px; border-radius: 20px; border: 1px solid var(--line); color: var(--ink-soft);
-}
 .tech-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 4px; }
 .tech-tags span { font-size: 11.5px; font-family: var(--font-mono); color: var(--ink-soft);
   background: var(--code-bg); border: 1px solid var(--line); border-radius: 5px; padding: 3px 8px; }
 
-/* ── SCHEMA DE PRINCIPE (dessine, pas une capture) ── */
+figure { margin: 20px 0; }
+figure img {
+  width: 100%; display: block; border: 1px solid var(--line); border-radius: 8px;
+  background: var(--surface); box-shadow: var(--shadow); cursor: zoom-in;
+}
+figure.photo img { max-height: 340px; object-fit: cover; object-position: center; }
+figcaption { margin-top: 8px; font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+.fig-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 620px) { .fig-row { grid-template-columns: 1fr; } }
+
 .pipeline { display: flex; flex-direction: column; gap: 10px; margin: 20px 0; }
 .pl-row { display: flex; align-items: stretch; gap: 10px; flex-wrap: wrap; }
 .pl-box {
@@ -101,6 +106,52 @@ th { color: var(--ink-faint); font-weight: 600; font-size: 11.5px; text-transfor
 .pl-arrow { display: flex; align-items: center; justify-content: center; color: var(--ink-faint); font-size: 18px; padding: 0 2px; }
 @media (max-width: 560px) { .pl-row { flex-direction: column; } .pl-arrow { transform: rotate(90deg); } }
 
+/* --- étapes numérotées --- */
+.phase {
+  font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--ink-faint); margin: 26px 0 12px;
+}
+.steps { counter-reset: step; list-style: none; margin: 0 0 6px; padding: 0; }
+.steps > li {
+  counter-increment: step; position: relative;
+  padding: 0 0 18px 34px; margin: 0; border-left: 1px solid var(--line);
+}
+.steps > li:last-child { border-left-color: transparent; padding-bottom: 0; }
+.steps > li::before {
+  content: counter(step, decimal-leading-zero);
+  position: absolute; left: -13px; top: -2px;
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--surface); border: 1px solid var(--line); color: var(--accent);
+  font-family: var(--font-mono); font-size: 10.5px;
+  display: flex; align-items: center; justify-content: center;
+}
+.steps h4 {
+  margin: 0 0 3px; font-family: var(--font-body); font-size: 14.5px;
+  font-weight: 650; color: var(--ink);
+}
+.steps p { margin: 0; font-size: 14px; color: var(--ink-soft); }
+
+/* --- cartes --- */
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 16px 0; }
+@media (max-width: 620px) { .grid2 { grid-template-columns: 1fr; } }
+.card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+  padding: 14px 16px; box-shadow: var(--shadow);
+}
+.card h4 { margin: 0 0 5px; font-size: 14px; font-weight: 650; color: var(--ink); }
+.card p { margin: 0; font-size: 13.5px; color: var(--ink-soft); }
+ul.check { list-style: none; padding-left: 0; }
+ul.check li { position: relative; padding-left: 24px; margin-bottom: 8px; }
+ul.check li::before {
+  content: "\2713"; position: absolute; left: 0; top: 0;
+  color: var(--accent); font-weight: 700;
+}
+
+#lb { display:none; position:fixed; inset:0; z-index:999; background:rgba(10,10,20,0.9);
+  align-items:center; justify-content:center; cursor:zoom-out; padding:24px; }
+#lb.open { display:flex; }
+#lb img { max-width:92vw; max-height:90vh; border-radius:8px; box-shadow:0 20px 60px rgba(0,0,0,0.5); }
+
 footer { padding-top: 28px; color: var(--ink-faint); font-size: 12.5px; }
 ::selection { background: var(--accent); color: white; }
 </style>
@@ -108,119 +159,260 @@ footer { padding-top: 28px; color: var(--ink-faint); font-size: 12.5px; }
 <body>
 
 <div class="confid">
-  Fiche synthétique publiée avec le souci de la confidentialité des travaux menés chez ACRI-ST : aucune
-  donnée, résultat chiffré ni visuel issu du stage n'est reproduit ici. Un résumé du rapport pourra être
-  publié ultérieurement, sous réserve d'approbation d'ACRI-ST.
+  À la demande d'ACRI-ST, aucune donnée, aucun résultat chiffré et aucune carte produite pendant ce stage ne sont publiés ici.
 </div>
+
+<div id="lb" onclick="this.classList.remove('open')"><img id="lb-img" src="" alt=""></div>
 
 <div class="wrap">
   <header class="masthead">
-    <p class="kicker">Fiche projet — stage ingénieur</p>
-    <h1 class="title">Détection d'oliviers par deep learning et modélisation de niche climatique</h1>
-    <p class="lede">Stage de fin d'études (M2), ACRI-ST, Sophia-Antipolis — 2025-2026. Cette fiche décrit la
-    démarche, les méthodes et les outils mobilisés, sans reproduire de données ni de résultats propres à
-    la mission.</p>
+    <p class="kicker">Stage de fin d'études · Master 2 INUM</p>
+    <h1 class="title">Détection d'oliviers par apprentissage profond et modélisation de niche climatique</h1>
+    <p class="lede">Six mois chez ACRI-ST à Sophia-Antipolis, du 16 mars au 11 septembre 2026, dans le cadre du projet
+    SCOLive2 du programme Space Climate Observatory. Objectif de la mission : localiser les oliveraies de la
+    région PACA sur imagerie satellite, puis relier ces localisations au climat pour mesurer comment la zone
+    favorable à l'espèce s'est déplacée depuis 1950.</p>
     <div class="meta-row">
-      <span>Télédétection Sentinel-2</span>
-      <span>Deep learning (séries temporelles)</span>
-      <span>Modélisation de niche écologique</span>
-      <span>Python / PyTorch / R</span>
+      <span>Sentinel-2 L3A</span>
+      <span>U-TAE / PyTorch</span>
+      <span>ERA5-Land</span>
+      <span>MaxEnt</span>
+      <span>Python</span>
+      <span>16 mars au 11 septembre 2026</span>
     </div>
   </header>
 
-  <section id="contexte">
-    <p class="eyebrow">Contexte</p>
-    <h2>Objectif de la mission</h2>
-    <p>Étudier la répartition actuelle de l'olivier (<em>Olea europaea</em>) en région PACA et anticiper
-    l'effet du changement climatique sur les zones favorables à sa culture, en combinant deux approches
-    complémentaires : la <strong>détection automatique des oliveraies</strong> par imagerie satellite, et la
-    <strong>modélisation de la niche climatique</strong> de l'espèce à partir de ces détections.</p>
+  <section id="sujet">
+    <p class="eyebrow">Le sujet</p>
+    <h2>Pourquoi ce travail</h2>
+    <p>L'olivier (<em>Olea europaea</em>) est une culture méditerranéenne dont l'implantation dépend
+    étroitement du climat. En France, le verger oléicole couvre environ 55 000 hectares, et la région PACA
+    concentre l'essentiel de la production nationale d'huile d'olive. Les projections climatiques annoncent
+    des étés plus chauds sur ce territoire, ce qui pose une question simple : où la culture restera-t-elle
+    possible, et où cesse-t-elle de l'être.</p>
+    <p>Y répondre demande deux briques. Il faut d'abord savoir où sont les oliviers aujourd'hui, à l'échelle
+    d'une région entière, ce qu'aucun inventaire existant ne donne de façon complète. Il faut ensuite relier
+    ces localisations aux variables climatiques pour estimer la zone favorable à l'espèce et la comparer entre
+    deux périodes. C'est le découpage de ma mission chez ACRI-ST, dans le projet SCOLive2.</p>
+    <figure class="photo">
+      <img src="assets/stage/acrist_batiment.jpg" alt="Bâtiment d'ACRI-ST à Sophia-Antipolis"
+           onclick="document.getElementById('lb-img').src=this.src; document.getElementById('lb').classList.add('open')">
+      <figcaption>ACRI-ST, Sophia-Antipolis, où s'est déroulé le stage.</figcaption>
+    </figure>
+  </section>
+
+  <section id="volets">
+    <p class="eyebrow">Mission</p>
+    <h2>Trois volets</h2>
+    <div class="pipeline">
+      <div class="pl-row">
+        <div class="pl-box"><strong>1. Détection</strong>Segmentation des oliveraies sur séries temporelles Sentinel-2, par le modèle U-TAE</div>
+        <div class="pl-arrow">→</div>
+        <div class="pl-box"><strong>2. Analyse climatique</strong>Variables bioclimatiques calculées depuis ERA5-Land sur deux périodes</div>
+        <div class="pl-arrow">→</div>
+        <div class="pl-box"><strong>3. Niche climatique</strong>Modèle MaxEnt calibré sur les détections, projeté sur les deux périodes</div>
+      </div>
+    </div>
+    <p>Les trois volets s'enchaînent. Les oliviers détectés au premier volet deviennent les points de présence
+    du troisième, et les variables climatiques du deuxième en sont les variables explicatives.</p>
   </section>
 
   <section id="demarche">
     <p class="eyebrow">Démarche</p>
-    <h2>Deux volets méthodologiques</h2>
+    <h2>Les étapes, dans l'ordre où je les ai menées</h2>
 
-    <h3>1 — Détection par deep learning sur séries temporelles</h3>
-    <p>Les oliveraies ont une signature spectrale qui varie au cours de l'année (phénologie) : les distinguer
-    fiablement des autres cultures ou de la végétation naturelle demande d'observer plusieurs dates dans
-    l'année plutôt qu'une image isolée. L'approche retenue s'appuie sur <strong>U-TAE</strong> (U-Net +
-    Temporal Attention Encoder, Garnot &amp; Landrieu, ICCV 2021), une architecture conçue spécifiquement pour
-    la segmentation de séries temporelles d'images satellite : un encodeur d'attention temporelle pondère
-    la contribution de chaque date, avant un décodeur de type U-Net qui produit la carte de segmentation.</p>
-    <div class="pipeline">
-      <div class="pl-row">
-        <div class="pl-box"><strong>Sentinel-2</strong>série temporelle multi-dates, 12 bandes spectrales</div>
-        <div class="pl-arrow">→</div>
-        <div class="pl-box"><strong>Annotations terrain</strong>polygones oliviers / non-oliviers (QGIS)</div>
-        <div class="pl-arrow">→</div>
-        <div class="pl-box accent"><strong>U-TAE</strong>encodeur d'attention temporelle + décodeur U-Net</div>
-        <div class="pl-arrow">→</div>
-        <div class="pl-box"><strong>Carte de probabilité</strong>présence d'oliviers, région entière</div>
-      </div>
-    </div>
-    <p>Travail réalisé sur cette partie : constitution du jeu de données (téléchargement et organisation des
-    images Sentinel-2, croisement avec les annotations), entraînement et validation du modèle, inférence sur
-    l'ensemble de la région, et post-traitement (filtrage des fausses détections sur route/bâti via des
-    masques OpenStreetMap, vectorisation des cartes de sortie).</p>
+    <p class="phase">Volet 1 · Détection par apprentissage profond</p>
+    <ol class="steps">
+      <li>
+        <h4>Cadrage et état de l'art</h4>
+        <p>Lecture des travaux sur la classification de séries temporelles satellite et sur la détection
+        d'oliviers. Le choix de l'architecture U-TAE vient d'une présentation interne sur un sujet voisin,
+        la détection de changements d'artificialisation des sols.</p>
+      </li>
+      <li>
+        <h4>Récupération des images</h4>
+        <p>Images Sentinel-2 de niveau L3A, des composites mensuels sans nuages produits par Theia/CNES,
+        téléchargées sur la zone d'étude via l'API <code>pygeodes</code> du portail GEODES.</p>
+      </li>
+      <li>
+        <h4>Construction de la vérité terrain</h4>
+        <p>Parcelles déclarées en oliviers dans le Registre Parcellaire Graphique de l'IGN, récupérées par
+        le service WFS de la Géoplateforme, puis complétées par des annotations manuelles sous QGIS pour les
+        zones mal couvertes et pour les contre-exemples.</p>
+      </li>
+      <li>
+        <h4>Constitution du jeu de données</h4>
+        <p>Découpage en patches de 128 × 128 pixels à 10 m de résolution, empilement des bandes spectrales
+        et des indices de végétation NDVI et NDRE, séries de 6 ou 12 dates selon la configuration, mise au
+        format PASTIS attendu par U-TAE, puis normalisation.</p>
+      </li>
+      <li>
+        <h4>Séparation spatiale des jeux</h4>
+        <p>Répartition entraînement, validation et test stratifiée spatialement. Un tirage aléatoire patch
+        par patch aurait laissé des patches voisins, presque identiques, des deux côtés de la séparation, et
+        la performance mesurée aurait été optimiste.</p>
+      </li>
+      <li>
+        <h4>Entraînement du modèle</h4>
+        <p>U-TAE associe un encodeur U-Net spatial et un encodeur d'attention temporelle, qui pondère la
+        contribution de chaque date. Les pixels oliviers représentent moins de 3 % du total, ce qui a conduit
+        à une perte combinée Focal et Dice. Exploration des hyperparamètres sur la fonction de perte, le taux
+        d'apprentissage et la stratégie d'échantillonnage.</p>
+      </li>
+      <li>
+        <h4>Évaluation</h4>
+        <p>Métrique principale : l'IoU de la classe olivier, qui pénalise à la fois les faux positifs et les
+        faux négatifs sans être porté par la masse des pixels négatifs. Suivi en complément de la précision,
+        du rappel, du F1 et de la matrice de confusion sur l'ensemble de test.</p>
+      </li>
+      <li>
+        <h4>Inférence et post-traitement</h4>
+        <p>Application du modèle retenu à l'ensemble de la zone d'étude, puis filtrage des fausses détections
+        sur routes et bâti à partir de masques OpenStreetMap, et vectorisation des sorties.</p>
+      </li>
+    </ol>
 
-    <h3>2 — Modélisation de la niche climatique (SDM)</h3>
-    <p>Les détections issues du volet précédent servent de points de présence pour un modèle de distribution
-    d'espèce (<em>Species Distribution Model</em>), sous <strong>MaxEnt</strong> (maximum d'entropie,
-    Phillips et al.), calibré sur des variables bioclimatiques dérivées des réanalyses climatiques
-    <strong>ERA5-Land</strong> (Copernicus). Le modèle est ajusté sur une période climatique de référence puis
-    projeté sur une période plus récente, ce qui permet de visualiser l'évolution de la niche favorable à
-    l'espèce dans le temps.</p>
-    <div class="pipeline">
-      <div class="pl-row">
-        <div class="pl-box"><strong>Carte de détection</strong>→ points de présence (sous-échantillonnage spatial)</div>
-        <div class="pl-arrow">→</div>
-        <div class="pl-box"><strong>ERA5-Land</strong>variables bioclimatiques (19 indices), 2 périodes</div>
-        <div class="pl-arrow">→</div>
-        <div class="pl-box accent"><strong>MaxEnt</strong>sélection de variables (VIF, corrélation) + calibration</div>
-        <div class="pl-arrow">→</div>
-        <div class="pl-box"><strong>Carte de niche</strong>période de référence vs période récente</div>
-      </div>
-    </div>
-    <p>Travail réalisé sur cette partie : extraction et nettoyage des points de présence (sous-échantillonnage
-    spatial pour limiter l'autocorrélation), calcul des variables bioclimatiques, sélection de variables par
-    facteur d'inflation de la variance (VIF) et analyse de corrélation, calibration et validation du modèle,
-    production des cartes de favorabilité pour les deux périodes climatiques.</p>
+    <figure>
+      <img src="assets/stage/utae_architecture.png" alt="Schéma de l'architecture U-TAE"
+           onclick="document.getElementById('lb-img').src=this.src; document.getElementById('lb').classList.add('open')">
+      <figcaption>Architecture U-TAE : encodeur U-Net spatial et attention temporelle. Schéma issu de la
+      publication d'origine, Garnot &amp; Landrieu, ICCV 2021.</figcaption>
+    </figure>
+
+    <p class="phase">Volets 2 et 3 · Climat et niche écologique</p>
+    <ol class="steps">
+      <li>
+        <h4>Données climatiques</h4>
+        <p>Réanalyses ERA5-Land de l'ECMWF, grille de 0,1° et pas mensuel depuis 1950, téléchargées par
+        l'API du Climate Data Store de Copernicus.</p>
+      </li>
+      <li>
+        <h4>Calcul des variables bioclimatiques</h4>
+        <p>Les 19 variables BIO calculées sur deux périodes : 1950-1980 comme référence, 1995-2025 pour les
+        conditions récentes.</p>
+      </li>
+      <li>
+        <h4>Sélection des variables</h4>
+        <p>Matrice de corrélation de Pearson entre variables, deux variables au-delà de |r| = 0,85 étant
+        tenues pour redondantes, puis arbitrage sur critère écologique. Sept variables retenues : BIO1, BIO5,
+        BIO6, BIO9, BIO12, BIO14 et BIO19.</p>
+      </li>
+      <li>
+        <h4>Préparation des occurrences</h4>
+        <p>Extraction des points de présence depuis la carte de détection, nettoyage, puis raréfaction
+        spatiale à la résolution ERA5 de 11 km pour éviter que les zones densément détectées pèsent trop
+        lourd. Tirage des points de fond sur la zone d'étude.</p>
+      </li>
+      <li>
+        <h4>Calibration du modèle de niche</h4>
+        <p>MaxEnt 3.4.4, exécuté en Java et piloté depuis Python. Features linéaires, quadratiques et
+        d'interaction, avec une régularisation L1 qui annule une partie des coefficients et limite le
+        sur-apprentissage malgré un nombre de présences réduit. Évaluation par AUC-ROC et TSS.</p>
+      </li>
+      <li>
+        <h4>Projection et comparaison</h4>
+        <p>Application du modèle calibré aux deux périodes climatiques, puis comparaison des cartes de
+        favorabilité pour situer les zones qui gagnent et celles qui perdent en faveur.</p>
+      </li>
+      <li>
+        <h4>Restitution</h4>
+        <p>Point de suivi hebdomadaire avec l'équipe, présentations en réunion à plusieurs étapes du stage,
+        rédaction du rapport et soutenance.</p>
+      </li>
+    </ol>
   </section>
 
   <section id="outils">
     <p class="eyebrow">Outils</p>
-    <h2>Chaîne technique mobilisée</h2>
+    <h2>Bibliothèques et environnement</h2>
     <table>
       <tbody>
-        <tr><td>Langages</td><td>Python (traitement, deep learning, géotraitement), R (analyses statistiques)</td></tr>
-        <tr><td>Deep learning</td><td>PyTorch, architecture U-TAE (Garnot &amp; Landrieu 2021)</td></tr>
-        <tr><td>SDM</td><td>MaxEnt (Phillips et al.), sélection de variables par VIF</td></tr>
-        <tr><td>Géospatial</td><td>GDAL/rasterio, GeoPandas, Shapely, QGIS</td></tr>
-        <tr><td>Données</td><td>Sentinel-2 (GEODES/CNES), ERA5-Land (Copernicus CDS), OpenStreetMap</td></tr>
+        <tr><td>Langage</td><td>Python, pour toute la chaîne. MaxEnt s'exécute en Java 8 et est piloté par un script Python.</td></tr>
+        <tr><td>Deep learning</td><td>PyTorch, torchvision. Implémentation U-TAE de Garnot &amp; Landrieu adaptée à mon jeu de données.</td></tr>
+        <tr><td>Géospatial</td><td>rasterio, GeoPandas, Shapely, pyproj, Fiona, QGIS pour l'annotation</td></tr>
+        <tr><td>Climat</td><td>xarray, netCDF4, cdsapi (Climate Data Store de Copernicus)</td></tr>
+        <tr><td>Téléchargement satellite</td><td>pygeodes (portail GEODES, Theia/CNES), requests</td></tr>
+        <tr><td>Analyse</td><td>NumPy, SciPy, pandas, scikit-learn</td></tr>
+        <tr><td>Visualisation</td><td>Matplotlib, seaborn</td></tr>
+        <tr><td>Sources de données</td><td>Sentinel-2 L3A, ERA5-Land, Registre Parcellaire Graphique (IGN), OpenStreetMap</td></tr>
       </tbody>
     </table>
     <div class="tech-tags">
-      <span>Python</span><span>PyTorch</span><span>R</span><span>Sentinel-2</span>
-      <span>U-TAE</span><span>MaxEnt</span><span>ERA5-Land</span><span>GDAL</span>
-      <span>GeoPandas</span><span>QGIS</span>
+      <span>Python</span><span>PyTorch</span><span>rasterio</span><span>GeoPandas</span>
+      <span>Shapely</span><span>xarray</span><span>cdsapi</span><span>pygeodes</span>
+      <span>scikit-learn</span><span>QGIS</span><span>MaxEnt</span><span>Git</span>
     </div>
   </section>
 
-  <section id="competences">
-    <p class="eyebrow">Compétences</p>
-    <h2>Compétences mobilisées</h2>
-    <ul>
-      <li>Traitement de séries temporelles d'images satellite multi-spectrales</li>
-      <li>Conception et entraînement de modèles de deep learning pour la segmentation sémantique</li>
-      <li>Modélisation de niche écologique et sélection statistique de variables (VIF, corrélation)</li>
-      <li>Constitution de jeux de données géospatiaux (annotation, croisement de sources, validation spatiale)</li>
-      <li>Analyse critique de résultats scientifiques (métriques de discrimination, validation croisée)</li>
+  <section id="objectifs">
+    <p class="eyebrow">Résultat</p>
+    <h2>Objectifs atteints</h2>
+    <p>Les trois volets fixés au cadrage ont été menés à leur terme dans les six mois :</p>
+    <ul class="check">
+      <li>un modèle U-TAE entraîné, comparé à plusieurs configurations et évalué sur un ensemble de test
+      spatialement disjoint, puis appliqué à l'ensemble de la zone d'étude pour produire une carte de
+      détection ;</li>
+      <li>les 19 variables bioclimatiques calculées sur les deux périodes, et un jeu de sept variables retenu
+      pour la modélisation ;</li>
+      <li>un modèle MaxEnt calibré, validé et projeté sur les deux périodes, permettant de comparer la zone
+      favorable à l'olivier entre les conditions historiques et récentes.</li>
     </ul>
+    <p>Les niveaux de performance obtenus sur le modèle de détection comme sur le modèle de niche sont
+    conformes à ce qui était attendu au cadrage, et bons au regard des valeurs de référence de la
+    littérature.</p>
+    <div class="callout">
+      <div class="label">Livrable</div>
+      Une chaîne de traitement documentée et reproductible, de la récupération des images jusqu'aux cartes
+      de favorabilité. Elle est réutilisable sur une autre culture ou une autre région en changeant les
+      annotations et la zone d'étude.
+    </div>
+  </section>
+
+  <section id="appris">
+    <p class="eyebrow">Bilan</p>
+    <h2>Ce que ce stage m'a appris</h2>
+    <div class="grid2">
+      <div class="card">
+        <h4>Conduire un pipeline complet</h4>
+        <p>De la donnée brute téléchargée jusqu'à la carte finale, en passant par l'annotation, l'entraînement
+        et le post-traitement. Chaque étape contraint la suivante.</p>
+      </div>
+      <div class="card">
+        <h4>Choisir une métrique qui dit la vérité</h4>
+        <p>Avec moins de 3 % de pixels positifs, l'accuracy n'apprend rien. L'IoU de la classe minoritaire
+        était la bonne mesure, et la séparation spatiale des jeux la bonne précaution.</p>
+      </div>
+      <div class="card">
+        <h4>Faire dialoguer des outils étrangers</h4>
+        <p>Le deep learning vit en Python et PyTorch, MaxEnt en Java. Les faire fonctionner ensemble demande
+        une attention constante aux formats et aux systèmes de coordonnées.</p>
+      </div>
+      <div class="card">
+        <h4>Défendre une méthode</h4>
+        <p>Présenter mon travail en réunion, répondre aux objections, et accepter qu'une remarque remette en
+        cause un choix déjà fait pour en tirer une meilleure version.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="ressenti">
+    <p class="eyebrow">Expérience</p>
+    <h2>Comment j'ai vécu ce stage</h2>
+    <p>J'ai passé six mois dans une équipe de recherche appliquée exigeante sur le plan scientifique, et
+    disponible pour accompagner un stagiaire dans ses choix comme dans ses erreurs. On m'a laissé une réelle
+    liberté dans l'exploration des méthodes, avec un point de suivi chaque semaine qui m'a évité de partir
+    trop loin dans une mauvaise direction.</p>
+    <p>Le plus formateur a été de présenter mon travail à plusieurs reprises, en réunion et devant mes
+    encadrants. Ces échanges ont directement modifié mes choix, sur la sélection des variables climatiques
+    comme sur la stratégie d'entraînement du modèle. Je ne m'attendais pas à développer cette compétence
+    aussi concrètement en arrivant.</p>
+    <p>Je termine ce stage avec l'envie de continuer sur la détection et le traitement d'images par
+    apprentissage profond, et une première expérience réelle du fonctionnement d'une équipe de R&amp;D.</p>
   </section>
 
   <footer>
-    Célestin Kpatcha — stage M2, ACRI-ST.
+    Célestin Kpatcha. Stage de fin d'études, Master 2 Ingénierie Mathématiques (INUM), Université Côte d'Azur,
+    Polytech Nice-Sophia. ACRI-ST, Sophia-Antipolis, du 16 mars au 11 septembre 2026.
   </footer>
 </div>
 

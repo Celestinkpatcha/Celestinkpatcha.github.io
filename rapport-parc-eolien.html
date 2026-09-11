@@ -159,8 +159,17 @@ tr.hl td { color: var(--accent-ink); font-weight: 650; }
 .badge.pending { color: var(--ink-faint); border-style: dashed; }
 footer { grid-column: 1/-1; padding-top: 32px; color: var(--ink-faint); font-size: 12.5px; }
 ::selection { background: var(--accent); color: white; }
+
+/* --- rendu KaTeX --- */
+.eq-block .katex { font-style: normal; font-size: 1.05em; }
+.eq-block .katex-display { margin: 0; }
+.eq-inline .katex { font-style: normal; }
 </style>
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body);"></script>
 
 </head>
 <body>
@@ -221,20 +230,20 @@ footer { grid-column: 1/-1; padding-top: 32px; color: var(--ink-faint); font-siz
       <h3>2.1 Déficit de sillage</h3>
       <p>Le déficit de vitesse dans le sillage d'une éolienne suit le modèle gaussien de Bastankhah &amp;
       Porté-Agel (2014) :</p>
-      <div class="eq-block"><span class="eqn">σ(x) = k x + ε D</span><span class="eqtag">(1)</span></div>
-      <div class="eq-block"><span class="eqn">ΔU(x,y)/U∞ = [1 − √(1 − C<sub>t</sub>/(8(σ/D)²))] · exp(−y²/2σ²)</span><span class="eqtag">(2)</span></div>
-      <p>où <span class="eq-inline">x</span> est la distance dans l'axe du vent, <span class="eq-inline">y</span>
-      l'écart latéral, <span class="eq-inline">D</span> le diamètre de rotor, <span class="eq-inline">C<sub>t</sub></span>
-      le coefficient de poussée, <span class="eq-inline">k</span> le taux d'expansion du sillage, et
-      <span class="eq-inline">ε</span> une constante liée à <span class="eq-inline">C<sub>t</sub></span>. Pour
+      <div class="eq-block"><span class="eqn">$$\sigma(x)=k\,x+\varepsilon D$$</span><span class="eqtag">(1)</span></div>
+      <div class="eq-block"><span class="eqn">$$\frac{\Delta U(x,y)}{U_{\infty}}=\left[1-\sqrt{1-\frac{C_t}{8\,(\sigma/D)^{2}}}\,\right]\exp\!\left(-\frac{y^{2}}{2\sigma^{2}}\right)$$</span><span class="eqtag">(2)</span></div>
+      <p>où <span class="eq-inline">\(x\)</span> est la distance dans l'axe du vent, <span class="eq-inline">\(y\)</span>
+      l'écart latéral, <span class="eq-inline">\(D\)</span> le diamètre de rotor, <span class="eq-inline">\(C_t\)</span>
+      le coefficient de poussée, <span class="eq-inline">\(k\)</span> le taux d'expansion du sillage, et
+      <span class="eq-inline">\(\varepsilon\)</span> une constante liée à <span class="eq-inline">\(C_t\)</span>. Pour
       plusieurs éoliennes en amont, les déficits se combinent par somme quadratique :</p>
-      <div class="eq-block"><span class="eqn">U<sub>i</sub> = U<sub>∞,i</sub> (1 − √(Σ<sub>j</sub> (ΔU<sub>ij</sub>/U∞)²))</span><span class="eqtag">(3)</span></div>
+      <div class="eq-block"><span class="eqn">$$U_{i}=U_{\infty,i}\left(1-\sqrt{\sum_{j}\left(\frac{\Delta U_{ij}}{U_{\infty}}\right)^{2}}\;\right)$$</span><span class="eqtag">(3)</span></div>
 
       <h3>2.2 Courbe de puissance et AEP</h3>
-      <div class="eq-block"><span class="eqn">P(U) = P<sub>r</sub> ((U−U<sub>ci</sub>)/(U<sub>r</sub>−U<sub>ci</sub>))³, U<sub>ci</sub>≤U&lt;U<sub>r</sub> ; P<sub>r</sub>, U<sub>r</sub>≤U≤U<sub>co</sub></span><span class="eqtag">(4)</span></div>
+      <div class="eq-block"><span class="eqn">$$P(U)=\begin{cases}0 & U&lt;U_{ci}\ \text{ou}\ U&gt;U_{co}\\ P_{r}\left(\dfrac{U-U_{ci}}{U_{r}-U_{ci}}\right)^{3} & U_{ci}\leq U&lt;U_{r}\\ P_{r} & U_{r}\leq U\leq U_{co}\end{cases}$$</span><span class="eqtag">(4)</span></div>
       <p>Turbine de référence 3.35 MW (D = 130 m, U<sub>ci</sub> = 4 m/s, U<sub>r</sub> = 9.8 m/s,
       U<sub>co</sub> = 25 m/s). La production annuelle intègre la puissance sur la rose des vents complète :</p>
-      <div class="eq-block"><span class="eqn">AEP = 8760 Σ<sub>dir</sub> Σ<sub>u</sub> f(dir,u) Σ<sub>i</sub> P(U<sub>i</sub>)</span><span class="eqtag">(5)</span></div>
+      <div class="eq-block"><span class="eqn">$$\mathrm{AEP}=8760\sum_{\mathrm{dir}}\sum_{u}f(\mathrm{dir},u)\sum_{i}P(U_{i})$$</span><span class="eqtag">(5)</span></div>
       <p>Chaque secteur directionnel est discrétisé en classes de vitesse pondérées par une distribution de
       Weibull (forme k = 2), plutôt qu'une vitesse unique par secteur — nécessaire pour que le facteur de
       charge résultant soit physiquement plausible (25-55 %, cf. section 6).</p>
@@ -245,9 +254,9 @@ footer { grid-column: 1/-1; padding-top: 32px; color: var(--ink-faint); font-siz
       <h2>Méthode numérique</h2>
       <p>L'objectif à minimiser combine l'AEP (à maximiser, donc en négatif) et une pénalité géométrique
       quadratique et continue (nulle et de dérivée nulle à la frontière de chaque contrainte) :</p>
-      <div class="eq-block"><span class="eqn">J(<span class="vec">x</span>) = −AEP(<span class="vec">x</span>) + w<sub>b</sub> d<sub>b</sub>² + w<sub>e</sub> d<sub>e</sub>² + w<sub>s</sub> d<sub>s</sub>²</span><span class="eqtag">(6)</span></div>
-      <p>où <span class="eq-inline">d<sub>b</sub></span>, <span class="eq-inline">d<sub>e</sub></span>,
-      <span class="eq-inline">d<sub>s</sub></span> sont les violations (distance hors frontière, profondeur de
+      <div class="eq-block"><span class="eqn">$$J(\mathbf{x})=-\mathrm{AEP}(\mathbf{x})+w_{b}d_{b}^{2}+w_{e}d_{e}^{2}+w_{s}d_{s}^{2}$$</span><span class="eqtag">(6)</span></div>
+      <p>où <span class="eq-inline">\(d_b\)</span>, <span class="eq-inline">\(d_e\)</span>,
+      <span class="eq-inline">\(d_s\)</span> sont les violations (distance hors frontière, profondeur de
       pénétration dans une zone d'exclusion, déficit d'espacement), nulles si la contrainte est respectée.</p>
       <p>Deux méthodes sont comparées sur ce même objectif :</p>
       <ul>
@@ -363,20 +372,19 @@ footer { grid-column: 1/-1; padding-top: 32px; color: var(--ink-faint); font-siz
         <caption>AEP finale (rose de vent réelle), après les deux étapes d'optimisation</caption>
         <thead><tr><th>Méthode</th><th class="num">AEP (MWh/an)</th><th class="num">Gain vs initial</th><th class="num">Facteur de charge</th><th class="num">Évaluations</th><th class="num">Temps</th></tr></thead>
         <tbody>
-          <tr><td>Layout initial (faisable)</td><td class="num">247 201</td><td class="num">—</td><td class="num">42.2 %</td><td class="num">—</td><td class="num">—</td></tr>
+          <tr><td>Layout initial (faisable)</td><td class="num">247 201</td><td class="num">—</td><td class="num">42.1 %</td><td class="num">—</td><td class="num">—</td></tr>
           <tr><td>Gradient (L-BFGS-B)</td><td class="num">271 612</td><td class="num">+9.9 %</td><td class="num">46.3 %</td><td class="num">642</td><td class="num">677 s</td></tr>
           <tr class="hl"><td>CMA-ES</td><td class="num">277 811</td><td class="num">+12.4 %</td><td class="num">47.3 %</td><td class="num">6 000</td><td class="num">161 s</td></tr>
         </tbody>
       </table>
       <p>Les deux méthodes convergent vers un optimum réaliste et respectent strictement les contraintes
       (0 violation, espacement minimal toujours dépassé de plus de 100 m). CMA-ES atteint le meilleur AEP,
-      avec un temps de calcul près de 4× plus court que le gradient sur ce problème — un résultat cohérent
-      avec la littérature WFLO, où les méthodes evolutionnaires à covariance adaptative sont régulièrement
+      avec un temps de calcul près de 4× plus court que le gradient sur ce problème. Ce constat rejoint la
+      littérature WFLO, où les méthodes évolutionnaires à covariance adaptative sont régulièrement
       compétitives, voire supérieures, aux méthodes de gradient sur des paysages d'optimisation non convexes
       et fortement contraints (Baker et al. 2019).</p>
-      <p>Facteurs de charge tous compris entre 42 et 48 %, cohérents avec un site onshore de qualité moyenne
-      à bonne (plage usuelle 25-55 %) — confirmation que le modèle de vent (distribution de Weibull par
-      secteur) donne des résultats physiquement plausibles.</p>
+      <p>Les facteurs de charge sont tous compris entre 42 et 48 %, dans la plage usuelle d'un site onshore
+      de qualité moyenne à bonne (25-55 %).</p>
     </section>
 
     <section id="limites">
